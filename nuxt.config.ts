@@ -9,6 +9,8 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["composables/**"],
   },
+  modules: ["nuxt-headlessui", "@formkit/nuxt"],
+
   app: {
     head: {
       link: [

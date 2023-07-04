@@ -1,6 +1,8 @@
 <template>
   <header class="py-3 px-4 border-b h-[4.5rem]">
-    <div class="max-w-7xl mx-auto flex items-center justify-between h-full">
+    <div
+      class="max-w-7xl mx-auto flex items-center gap-4 md:justify-between h-full"
+    >
       <img
         src="./../assets//logo.png"
         alt="logo"
@@ -10,8 +12,18 @@
       <NavbarRight />
     </div>
   </header>
+  <Modals>
+    <template v-if="modalToggle == 'Register'">
+      <ModalsRegister />
+    </template>
+    <template v-else-if="modalToggle == 'Login'"> login</template>
+  </Modals>
+
   <slot></slot>
 </template>
+<script setup lang="ts">
+let { modalToggle } = useVars();
+</script>
 <style>
 html {
   font-family: "Poppins", sans-serif;
