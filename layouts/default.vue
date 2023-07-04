@@ -16,7 +16,9 @@
     <template v-if="modalToggle == 'Register'">
       <ModalsRegister />
     </template>
-    <template v-else-if="modalToggle == 'Login'"> login</template>
+    <template v-else-if="modalToggle == 'Login'">
+      <ModalsLogin />
+    </template>
   </Modals>
 
   <slot></slot>

@@ -1,24 +1,20 @@
 <template>
-  <div class="my-3">
-    <ModalsTitle title="Wellcome to Airbnb" subTitle="Create account" />
+  <div>
+    <ModalsTitle
+      title="Welcome back"
+      class="my-4"
+      subTitle="Login to your account"
+    />
 
     <div class="my-5">
       <FormKit type="form" @submit="handleSubmit" :actions="false">
-        <Input
-          id="name"
-          name="name"
-          label="Name"
-          type="text"
-          validation="required|length:5,255"
-          placeholder="Enter Name"
-        />
         <Input
           id="email"
           name="email"
           label="Email"
           type="email"
           validation="required|email|length:5,255"
-          placeholder="Enter Name"
+          placeholder="Enter Email"
         />
         <Input
           id="password"
@@ -33,7 +29,7 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
 const handleSubmit = (event: any) => {
   console.log(event);
 };

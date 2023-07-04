@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-2">
-    <h2 class="text-lg font-medium">{{ props.title }}</h2>
+    <h2 class="text-lg font-semibold">{{ props.title }}</h2>
     <small class="text-gray-500">{{ props.subTitle }}</small>
   </div>
 </template>
