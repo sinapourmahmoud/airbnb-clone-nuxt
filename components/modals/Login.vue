@@ -24,13 +24,17 @@
           validation="required|password|length:5,255"
           placeholder="Enter Password"
         />
-        <Button type="submit" title="Register"></Button>
+        <Button type="submit" title="Login" :disabled="loading"></Button>
       </FormKit>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-const handleSubmit = (event: any) => {
-  console.log(event);
+let { login } = useAuth();
+let loading = ref(false);
+const handleSubmit = async (event: any) => {
+  loading.value = true;
+  let result = await login(event.password, event.email);
+  loading.value = false;
 };
 </script>

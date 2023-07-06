@@ -28,4 +28,8 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  appConfig: {
+    jwtRefreshToken: process.env.JWT_REFRESH_TOKEN,
+    jwtAccessToken: process.env.JWT_ACCESS_TOKEN,
+  },
 });

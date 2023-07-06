@@ -10,5 +10,15 @@ export default () => {
     });
     return data;
   };
-  return { register };
+  const login = async (password: String, email: String) => {
+    let { data, pending } = await useFetch("/api/login", {
+      method: "POST",
+      body: {
+        password,
+        email,
+      },
+    });
+    return data;
+  };
+  return { register, login };
 };
