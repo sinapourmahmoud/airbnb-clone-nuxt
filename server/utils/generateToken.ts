@@ -13,6 +13,12 @@ export const generateRefreshToken = async (id: String) => {
   });
 };
 
+export const decodeAccessToken = async (token: string) => {
+  let config = useAppConfig();
+
+  return await jwt.verify(token, config?.jwtAccessToken);
+};
+
 export const docodeRefreshToken = async (token: string) => {
   let config = useAppConfig();
 

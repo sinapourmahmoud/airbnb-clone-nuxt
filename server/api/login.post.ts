@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
   if (!checkUser) {
     throw createError({
       statusCode: 500,
-      statusMessage: "user has not logged in",
+      statusMessage: "user has not register",
     });
   }
   try {

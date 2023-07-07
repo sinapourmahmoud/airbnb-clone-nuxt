@@ -2,6 +2,8 @@ import { docodeRefreshToken, generateToken } from "../utils/generateToken";
 import getUserById from "../utils/getUserById";
 import getRefreshToken from "./../utils/getRefreshToken";
 export default defineEventHandler(async (event) => {
+  console.log("salam");
+  console.log("salam");
   let getRefreshTokenCookie = getCookie(event, "refresh_token");
   if (!getRefreshTokenCookie) {
     throw createError({

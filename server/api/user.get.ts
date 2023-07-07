@@ -1,3 +1,3 @@
 export default defineEventHandler(async (event) => {
-  return { name: "sina" };
+  return { user: userTransformer(event.context.auth) };
 });
