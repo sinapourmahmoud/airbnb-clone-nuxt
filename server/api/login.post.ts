@@ -2,7 +2,7 @@ import prisma from "../db/prisma";
 import createRefreshToken from "../utils/createRefreshToken";
 import { generateToken } from "../utils/generateToken";
 import saveRefreshToken from "../utils/saveRefreshToken";
-
+import bcrypt from "bcrypt";
 export default defineEventHandler(async (event) => {
   let body: any = await readBody(event);
   let { email, password } = body;
@@ -21,6 +21,13 @@ export default defineEventHandler(async (event) => {
     throw createError({
       statusCode: 500,
       statusMessage: "user has not register",
+    });
+  }
+  let comparePasswords = bcrypt.compare(password, checkUser.hashedPassword);
+  if (!comparePasswords) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: "password is incrrect",
     });
   }
   try {

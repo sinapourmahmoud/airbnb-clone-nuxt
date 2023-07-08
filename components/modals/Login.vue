@@ -31,10 +31,12 @@
 </template>
 <script setup lang="ts">
 let { login } = useAuth();
+let { modalToggle } = useVars();
 let loading = ref(false);
 const handleSubmit = async (event: any) => {
   loading.value = true;
   let result = await login(event.password, event.email);
   loading.value = false;
+  modalToggle.value = null;
 };
 </script>

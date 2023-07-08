@@ -19,8 +19,10 @@
     <template v-else-if="modalToggle == 'Login'">
       <ModalsLogin />
     </template>
+    <template v-else-if="modalToggle == 'addItem'">
+      <ModalsAddItem />
+    </template>
   </Modals>
-
   <slot></slot>
 </template>
 <script setup lang="ts">

@@ -1,9 +1,11 @@
 <template>
   <button
+    @click="addClick"
     :type="type"
     :disabled="disabled"
     :class="`text-center w-full   rounded-xl
-    transition-all duration-300 disabled:opacity-80
+    transition-all duration-300 disabled:opacity-50
+    disabled:cursor-not-allowed
         ${small ? 'py-1' : 'py-3'}
     ${
       outline
@@ -24,4 +26,10 @@ interface Props {
 }
 
 let { type } = defineProps<Props>();
+let emit = defineEmits<{
+  (event: "clicked"): void;
+}>();
+const addClick = () => {
+  emit("clicked");
+};
 </script>

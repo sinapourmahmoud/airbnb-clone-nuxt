@@ -35,10 +35,12 @@
 </template>
 <script lang="ts" setup>
 let { register } = useAuth();
+let { modalToggle } = useVars();
 let loading = ref(false);
 const handleSubmit = async (event: any) => {
   loading.value = true;
   let result = await register(event.name, event.password, event.email);
   loading.value = false;
+  modalToggle.value = "Login";
 };
 </script>
