@@ -1,10 +1,7 @@
 <template>
   <div class="my-4 flex flex-col gap-3">
-    <ModalsAddItemCategories
-      v-show="step === 1"
-      :category="items.category"
-      @changeCategory="changeOption"
-    />
+    <ModalsAddItemCategories v-show="step === 1" />
+    <ModalsAddItemSelectCountry v-show="step === 2" />
     <div class="flex items-center gap-3">
       <Button
         title="Prev"
@@ -25,9 +22,6 @@ enum STEPS {
   image = 4,
   description = 5,
 }
-let items = reactive({
-  category: "",
-});
 
 let step = ref<STEPS>(STEPS.category);
 
@@ -42,9 +36,5 @@ const nextClick = () => {
     return;
   }
   step.value = step.value + 1;
-};
-
-const changeOption = (title: "category", label: string) => {
-  items[title] = label;
 };
 </script>

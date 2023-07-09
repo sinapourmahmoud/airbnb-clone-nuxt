@@ -25,8 +25,12 @@
     "@formkit/nuxt": "^0.17.4",
     "@heroicons/vue": "^2.0.18",
     "@prisma/client": "4.16.2",
+    "@types/country-list": "^2.1.1",
     "bcrypt": "^5.1.0",
+    "country-list": "^2.3.0",
     "jsonwebtoken": "^9.0.0",
-    "url-pattern": "^1.0.3"
+    "nuxt-leaflet": "^0.0.27",
+    "url-pattern": "^1.0.3",
+    "world-countries": "^4.0.0"
   }
 }
