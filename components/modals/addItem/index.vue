@@ -3,6 +3,7 @@
     <ModalsAddItemCategories v-show="step === 1" />
     <ModalsAddItemSelectCountry v-show="step === 2" />
     <ModalsAddItemCounters v-show="step === 3" />
+    <ModalsAddItemUploadImage v-show="step === 4" />
     <div class="flex items-center gap-3">
       <Button
         title="Prev"

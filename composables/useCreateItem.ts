@@ -5,6 +5,7 @@ const useCreateItem = () => {
     roomCount: 1,
     guestCount: 1,
     bathroomCount: 1,
+    imageSrc: "",
   });
   // let useCategory = useState<string | null>("useCategory", () => null);
   // let useCountryLocation = useState<string | null>(
