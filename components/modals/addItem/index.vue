@@ -2,6 +2,7 @@
   <div class="my-4 flex flex-col gap-3">
     <ModalsAddItemCategories v-show="step === 1" />
     <ModalsAddItemSelectCountry v-show="step === 2" />
+    <ModalsAddItemCounters v-show="step === 3" />
     <div class="flex items-center gap-3">
       <Button
         title="Prev"
