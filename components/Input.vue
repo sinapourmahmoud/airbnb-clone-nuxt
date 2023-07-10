@@ -5,7 +5,6 @@
     :id="props.id"
     :validation="props.validation"
     outer-class="mb-5"
-    validation-visibility="live"
     :placeholder="props.placeholder"
     message=" text-red-500 mb-1 text-xs max-w-xs"
     input-class="min-w-[100%] peer   outline-none border-2  h-10 px-3 p-6 text-base text-gray-700  rounded-lg border border-gray-400 "

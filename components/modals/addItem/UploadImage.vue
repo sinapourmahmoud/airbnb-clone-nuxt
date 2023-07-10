@@ -10,12 +10,12 @@
       @click="openInput"
       class="flex items-center justify-center h-[60vh] rounded-xl border my-3 cursor-pointer border-black"
     >
-      <PhotoIcon class="w-10" v-show="!items.imageSrc" />
+      <PhotoIcon class="w-10" v-show="!changeValues.list.imageSrc" />
       <img
-        :src="items.imageSrc"
+        :src="changeValues.list.imageSrc"
         alt="pictureUploaded"
         class="w-full h-full object-cover rounded-xl"
-        v-show="items.imageSrc"
+        v-show="changeValues.list.imageSrc"
       />
     </div>
     <input
@@ -29,7 +29,9 @@
 </template>
 <script setup lang="ts">
 import { PhotoIcon } from "@heroicons/vue/24/outline";
-let { items } = useCreateItem();
+import { useItems } from "~/store/items";
+
+let changeValues = useItems();
 
 let inputRef = ref<HTMLInputElement | null>(null);
 const openInput = () => {
@@ -40,7 +42,7 @@ const addImage = (event: Event) => {
   const reader = new FileReader();
   reader.readAsDataURL(image);
   reader.onload = (e) => {
-    items.imageSrc = e?.target?.result as string;
+    changeValues.addItem("imageSrc", e?.target?.result as string);
   };
 };
 </script>

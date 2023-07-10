@@ -7,7 +7,7 @@
         :key="index"
         @click="selectOption(category.label)"
         class="cursor-pointer flex items-center flex-col border gap-2 py-3 rounded-xl transition-all duration-300"
-        :class="items.category === category.label && 'border-black'"
+        :class="changeValues.list.category === category.label && 'border-black'"
       >
         <component :is="category.icon"></component>
         <h2>{{ category.label }}</h2>
@@ -16,11 +16,13 @@
   </div>
 </template>
 <script setup lang="ts">
+import { useItems } from "~/store/items";
 interface Props {
   category: string;
 }
 
-let { items } = useCreateItem();
+let changeValues = useItems();
+
 const SvgsCamping = resolveComponent("SvgsCamping");
 const SvgsSnow = resolveComponent("SvgsSnow");
 const SvgsDiamond = resolveComponent("SvgsDiamond");
@@ -83,6 +85,6 @@ const categories = [
 
 const selectOption = (label: string) => {
   // emits("changeCategory", "category", label);
-  items.category = label;
+  changeValues.addItem("category", label);
 };
 </script>

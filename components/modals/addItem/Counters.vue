@@ -13,7 +13,7 @@
         subtitle="how many rooms should have ?
   
       "
-        :count="items.roomCount"
+        :count="changeValues.list.roomCount"
         @plus="plusItem"
         @min="minItem"
       />
@@ -25,7 +25,7 @@
         "
         @plus="plusItem"
         @min="minItem"
-        :count="items.bathroomCount"
+        :count="changeValues.list.bathroomCount"
       />
       <ModalsAddItemCounterItem
         composable="guestCount"
@@ -35,21 +35,21 @@
       "
         @plus="plusItem"
         @min="minItem"
-        :count="items.guestCount"
+        :count="changeValues.list.guestCount"
       />
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import { useItems } from "~/store/items";
+
+let changeValues = useItems();
+
 type LabelOptions = "roomCount" | "bathroomCount" | "guestCount";
-let { items } = useCreateItem();
 const plusItem = (label: LabelOptions) => {
-  items[label] = items[label] + 1;
+  changeValues.addItem(label, changeValues.list[label] + 1);
 };
 const minItem = (label: LabelOptions) => {
-  if (items[label] === 0) {
-    return;
-  }
-  items[label] = items[label] - 1;
+  changeValues.addItem(label, changeValues.list[label] - 1);
 };
 </script>

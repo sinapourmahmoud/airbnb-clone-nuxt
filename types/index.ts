@@ -9,3 +9,14 @@ export interface CustomUser {
   updatedAt: string;
   favoriteIds: string[];
 }
+
+export interface AddDataType {
+  category: string;
+  locationValue: string;
+  roomCount: number;
+  guestCount: number;
+  bathroomCount: number;
+  imageSrc: string;
+  description: string;
+  title: string;
+}

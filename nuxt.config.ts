@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["composables/**"],
   },
-  modules: ["nuxt-headlessui", "@formkit/nuxt"],
+  modules: ["nuxt-headlessui", "@formkit/nuxt", "@pinia/nuxt"],
 
   app: {
     head: {

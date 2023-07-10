@@ -3,7 +3,7 @@
     type="select"
     name="country"
     :value="countriesList[0].label"
-    v-model="items.locationValue"
+    v-model="input"
     input-class="w-full    outline-none border-2  h-12 p-1   rounded-lg border border-gray-400 "
   >
     <optgroup label="Select country">
@@ -19,5 +19,15 @@
 </template>
 <script setup lang="ts">
 import { countriesList } from "../utils/countries";
-let { items } = useCreateItem();
+import { useItems } from "~/store/items";
+
+let changeValue = useItems();
+
+let input = ref("");
+watch(
+  () => input.value,
+  (newVal: string) => {
+    changeValue.addItem("locationValue", newVal);
+  }
+);
 </script>
