@@ -61,6 +61,7 @@ const handleSubmit = (e: any) => {
   if (step.value === STEPS.info) {
     changeValues.addItem("title", e.title);
     changeValues.addItem("description", e.description);
+    changeValues.addItem("price", e.price);
     addData(changeValues.list);
   }
 };

@@ -8,6 +8,7 @@ type ItemType =
   | "bathroomCount"
   | "imageSrc"
   | "description"
+  | "price"
   | "title";
 
 export const useItems = defineStore({
@@ -23,6 +24,7 @@ export const useItems = defineStore({
         imageSrc: "",
         description: "",
         title: "",
+        price: 1,
       },
     };
   },

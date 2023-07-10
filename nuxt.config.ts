@@ -28,11 +28,18 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+
   appConfig: {
     jwtRefreshToken: process.env.JWT_REFRESH_TOKEN,
     jwtAccessToken: process.env.JWT_ACCESS_TOKEN,
     appCloudName: process.env.CLOUDNAME,
     appApiKey: process.env.API_KEY,
     appApiSecret: process.env.API_SECRET,
+  },
+
+  image: {
+    cloudinary: {
+      baseURL: "https://res.cloudinary.com/dxlq8pwwl/image/upload/v1685716173",
+    },
   },
 });

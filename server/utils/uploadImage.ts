@@ -11,7 +11,7 @@ const cloudinary = () => {
 };
 
 export const uploadImage = (image: string) => {
-  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     cloudinary().uploader.upload(image, (err: any, data: any) => {
       if (err) reject(err);
       resolve(data);

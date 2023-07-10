@@ -40,9 +40,9 @@ const openInput = () => {
 const addImage = (event: Event) => {
   let image = (event.target as HTMLInputElement)?.files[0];
   const reader = new FileReader();
-  reader.readAsDataURL(image);
   reader.onload = (e) => {
     changeValues.addItem("imageSrc", e?.target?.result as string);
   };
+  reader.readAsDataURL(image);
 };
 </script>

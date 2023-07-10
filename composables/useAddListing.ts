@@ -1,10 +1,14 @@
 import { AddDataType } from "types";
 export default () => {
   const addData = async (data: AddDataType) => {
-    let result = await useFetchApi("/api/addListing", {
-      method: "POST",
-    });
-    console.log(result);
+    try {
+      let result = await useFetchApi("/api/addListing", {
+        body: { ...data },
+        method: "POST",
+      });
+    } catch (err: any) {
+      console.log(err.message);
+    }
   };
   return { addData };
 };

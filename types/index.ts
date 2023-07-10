@@ -12,6 +12,7 @@ export interface CustomUser {
 
 export interface AddDataType {
   category: string;
+  price: number;
   locationValue: string;
   roomCount: number;
   guestCount: number;

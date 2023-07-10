@@ -22,6 +22,15 @@
       validation="required|length:5,255"
       placeholder="Enter Description"
     />
+    <Input
+      id="price"
+      name="price"
+      label="Price"
+      type="number"
+      validation="required|number|min:1"
+      placeholder="Enter Price"
+      value="1"
+    />
   </div>
 </template>
 <script setup lang="ts"></script>

@@ -3,6 +3,7 @@ const useFetchApi = async (
   options: {
     headers?: object;
     method?: "GET" | "POST";
+    body?: object;
   }
 ) => {
   let { useToken } = useAuth();
