@@ -20,7 +20,12 @@
           type="text"
           v-show="step !== 5"
         />
-        <Button title="Submit" type="submit" v-show="step === 5" />
+        <Button
+          title="Submit"
+          type="submit"
+          :disabled="loading"
+          v-show="step === 5"
+        />
       </div>
     </FormKit>
   </div>
@@ -43,6 +48,8 @@ const { addData } = useAddListing();
 let step = ref<STEPS>(STEPS.category);
 let isOnSubmit = useState("submit", () => false);
 
+let loading = useState("loading", () => false);
+
 const prevClick = () => {
   if (step.value === 1) {
     return;
@@ -58,11 +65,13 @@ const nextClick = () => {
 };
 
 const handleSubmit = (e: any) => {
+  loading.value = true;
   if (step.value === STEPS.info) {
     changeValues.addItem("title", e.title);
     changeValues.addItem("description", e.description);
     changeValues.addItem("price", e.price);
     addData(changeValues.list);
   }
+  loading.value = false;
 };
 </script>
