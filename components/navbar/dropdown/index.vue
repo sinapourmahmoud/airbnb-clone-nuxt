@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="`absolute  shadow-xl right-1 transition-all duration-300  bg-white min-w-[200px] rounded-lg h-auto ${
+    :class="`absolute z-50  shadow-xl right-1 transition-all duration-300  bg-white min-w-[200px] rounded-lg h-auto ${
       props.toggle
         ? `opacity-100  ${useUser ? 'translate-y-52' : 'translate-y-24'}`
         : 'opacity-0 translate-y-56'

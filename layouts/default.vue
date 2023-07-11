@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-3">
+  <div class="flex flex-col gap-3 mb-3">
     <header class="py-3 px-4 border-b h-[4.5rem]">
       <div
         class="max-w-7xl mx-auto flex items-center gap-4 md:justify-between h-full"

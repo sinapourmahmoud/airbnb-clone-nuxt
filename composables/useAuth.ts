@@ -5,7 +5,7 @@ export default () => {
   let useUser = useState<CustomUser | null>("useUser", () => null);
   let useToken = useState<string | null>("useToken", () => null);
   const register = async (name: String, password: String, email: String) => {
-    let { data, pending } = await useFetch("/api/register", {
+    let data = await $fetch("/api/register", {
       method: "POST",
       body: {
         name,
@@ -16,15 +16,15 @@ export default () => {
     return data;
   };
   const login = async (password: String, email: String) => {
-    let { data, pending } = await useFetch("/api/login", {
+    let data = await $fetch("/api/login", {
       method: "POST",
       body: {
         password,
         email,
       },
     });
-    setToken(data?.value?.token as string);
-    setUser(data?.value?.user as CustomUser);
+    setToken(data?.token as string);
+    setUser(data?.user as CustomUser);
   };
   const setToken = (token: string) => {
     useToken.value = token;

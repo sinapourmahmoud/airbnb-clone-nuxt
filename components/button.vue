@@ -6,7 +6,7 @@
     :class="`text-center w-full   rounded-xl
     transition-all duration-300 disabled:opacity-50
     disabled:cursor-not-allowed
-        ${small ? 'py-1' : 'py-3'}
+        ${small ? 'py-2' : 'py-3'}
     ${
       outline
         ? 'bg-white border border-black/80 '
