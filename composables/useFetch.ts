@@ -1,5 +1,6 @@
 export default () => {
   let useFetchingData = useState("useFetchingData");
+  let useSingleItem = useState<any>("useSingleItem");
   const fetchListings = async () => {
     try {
       let result = await $fetch("/api/getListings");
@@ -8,5 +9,13 @@ export default () => {
       console.log(err.message);
     }
   };
-  return { fetchListings, useFetchingData };
+  const fetchSingleList = async (id: string) => {
+    try {
+      let result: any = await useFetchApi(`/api/getItem/${id}`, {});
+      useSingleItem.value = result;
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
+  return { fetchListings, useFetchingData, fetchSingleList, useSingleItem };
 };

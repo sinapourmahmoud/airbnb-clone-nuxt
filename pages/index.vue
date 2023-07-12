@@ -13,6 +13,7 @@
 </template>
 <script setup lang="ts">
 let { fetchListings, useFetchingData } = useFetch();
+
 onBeforeMount(() => {
   fetchListings();
   console.log(useFetchingData.value);

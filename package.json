@@ -26,6 +26,7 @@
     "@heroicons/vue": "^2.0.18",
     "@nuxt/image-edge": "^1.0.0-rc.1-28143901.afe4120",
     "@pinia/nuxt": "^0.4.11",
+    "@popperjs/core": "^2.11.8",
     "@prisma/client": "4.16.2",
     "@types/country-list": "^2.1.1",
     "bcrypt": "^5.1.0",
@@ -37,6 +38,7 @@
     "nuxt-leaflet": "^0.0.27",
     "pinia": "^2.1.4",
     "url-pattern": "^1.0.3",
+    "v-calendar": "^3.0.3",
     "world-countries": "^4.0.0"
   },
   "overrides": {

@@ -6,3 +6,15 @@ export const countriesList = countries.map((country) => ({
   latlng: country.latlng,
   region: country.region,
 }));
+
+export const getCountry = (label: string) => {
+  return countriesList.filter(
+    (item: {
+      label: string;
+      value: string;
+      flag: string;
+      latlng: [number, number];
+      region: string;
+    }) => item.label === label
+  )[0];
+};

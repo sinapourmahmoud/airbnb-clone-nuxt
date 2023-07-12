@@ -6,6 +6,7 @@ interface Items extends AddDataType {
 }
 
 export default async (item: Items) => {
+  console.log(item);
   return await prisma.listing.create({
     data: {
       ...item,
