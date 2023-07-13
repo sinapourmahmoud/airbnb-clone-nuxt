@@ -13,6 +13,7 @@ export default () => {
     try {
       let result: any = await useFetchApi(`/api/getItem/${id}`, {});
       useSingleItem.value = result;
+      console.log(useSingleItem.value);
     } catch (err: any) {
       console.log(err.message);
     }

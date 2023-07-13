@@ -19,7 +19,10 @@ export default () => {
           totalPrice,
         },
       });
-      console.log(resault);
+      reloadNuxtApp({
+        path: `/listing/${id}`,
+        ttl: 1000,
+      });
     } catch (err: any) {
       console.log(err);
     }

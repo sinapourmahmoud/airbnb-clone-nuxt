@@ -73,6 +73,7 @@
             :attributes="attributes"
             class="my-calendar"
             expanded
+            :disabled-dates="reservingDate"
             :min-date="new Date()"
             show-caps
             transparent
@@ -104,6 +105,8 @@ const SvgsBeach = resolveComponent("SvgsBeach");
 
 let { fetchSingleList, useSingleItem } = useFetch();
 const range = ref({ start: new Date(), end: new Date() });
+
+let reservingDate = ref<any[]>([]);
 
 const attributes = reactive([
   {
@@ -178,6 +181,12 @@ let route = useRoute();
 
 onMounted(async () => {
   await fetchSingleList(route?.params?.id as string);
+  reservingDate.value = [
+    ...useSingleItem.value?.data?.reservations?.map((item: any) => ({
+      start: new Date(item.startDate),
+      end: new Date(item.endDate),
+    })),
+  ];
 });
 
 let pageData = computed(() => {
