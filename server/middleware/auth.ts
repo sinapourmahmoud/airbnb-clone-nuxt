@@ -2,7 +2,12 @@ import UrlPattern from "url-pattern";
 import { decodeAccessToken } from "../utils/generateToken";
 export default defineEventHandler(async (event) => {
   const query = getRequestURL(event).pathname;
-  let endpoints = ["/api/user", "/api/addListing", "/api/likeDislike/:id"];
+  let endpoints = [
+    "/api/user",
+    "/api/addListing",
+    "/api/likeDislike/:id",
+    "/api/reserve/:id",
+  ];
   let mathcedEndpoint = endpoints.some((endPoint) => {
     let item = new UrlPattern(endPoint);
     return item.match(query);

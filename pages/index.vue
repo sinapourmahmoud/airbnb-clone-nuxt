@@ -16,6 +16,5 @@ let { fetchListings, useFetchingData } = useFetch();
 
 onBeforeMount(() => {
   fetchListings();
-  console.log(useFetchingData.value);
 });
 </script>

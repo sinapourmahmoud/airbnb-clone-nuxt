@@ -78,7 +78,7 @@
             transparent
             borderless
           />
-          <Button title="Reserve" type="button" />
+          <Button title="Reserve" type="button" @clicked="handleReserving" />
           <div class="flex items-center justify-between">
             <p class="text-lg font-semibold">Total</p>
             <p class="text-lg font-semibold">$ {{ totalPrice }}</p>
@@ -172,6 +172,8 @@ let { addLikeDislike } = useProduct();
 
 let { useUser } = useAuth();
 
+let { addReserving } = useReserving();
+
 let route = useRoute();
 
 onMounted(async () => {
@@ -207,7 +209,15 @@ let totalPrice = computed(() => {
   let endDate = Date.parse(range.value?.end.toDateString());
   return Math.round((endDate - firstDay) / 1000 / 60 / 60 / 24);
 });
-// console.log(pageData.value);
+
+const handleReserving = async () => {
+  await addReserving({
+    id: pageData.value?.id,
+    startDate: range.value?.start,
+    endDate: range.value?.end,
+    totalPrice: totalPrice.value,
+  });
+};
 </script>
 <style>
 .vc-time-picker {
