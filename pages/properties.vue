@@ -1,12 +1,11 @@
 <template>
   <div class="max-w-6xl mx-auto flex flex-col gap-5 px-4">
-    <PageTitle title="Reservations" subtitle="Here are your reservations" />
-
+    <PageTitle title="Properties" subtitle="Here are your properties" />
     <div
       class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 w-full"
     >
       <Cart
-        v-for="(list, index) in lists"
+        v-for="(list, index) in usePropertiesData"
         :key="index"
         :fromUserSide="true"
         :id="list?.listing?.id"
@@ -16,7 +15,6 @@
         :category="list?.listing?.category"
         :startDate="list?.startDate"
         :endDate="list?.endDate"
-        :fromReserve="true"
         :reservationId="list?.id"
         @removeItem="removeHandler"
       />
@@ -24,16 +22,11 @@
   </div>
 </template>
 <script setup lang="ts">
-let { getReservations, reservingList, removeReservation } = useReserving();
-
+let { fetchProperties, usePropertiesData } = useFetch();
+let { removeReservation } = useReserving();
 onBeforeMount(async () => {
-  await getReservations();
+  await fetchProperties();
 });
-
-const lists = computed(() => {
-  return reservingList?.value;
-});
-
 const removeHandler = async (id: string) => {
   await removeReservation(id);
 };

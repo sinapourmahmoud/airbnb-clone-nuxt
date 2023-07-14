@@ -19,7 +19,11 @@
       v-if="!!useUser"
       @clicked="changePage('reservations')"
     />
-    <NavbarDropdownItem title="My properties" v-if="!!useUser" />
+    <NavbarDropdownItem
+      title="My properties"
+      v-if="!!useUser"
+      @clicked="changePage('properties')"
+    />
     <NavbarDropdownItem title="Airbnb your home" v-if="!!useUser" />
     <NavbarDropdownItem title="Logout" v-if="!!useUser" />
 

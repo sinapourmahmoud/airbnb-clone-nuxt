@@ -32,7 +32,9 @@
     >
       {{ startDate }} - {{ endDate }}
     </small>
-    <p class="text-base font-normal">{{ price }} $ night</p>
+    <p class="text-base font-normal">
+      {{ price }} $ {{ !fromUserSide ? "night" : "total" }}
+    </p>
     <Button
       @clicked="removeHandler"
       :title="fromReserve ? 'Clear from reservations' : 'clear from properties'"

@@ -1,6 +1,7 @@
 export default () => {
   let useFetchingData = useState("useFetchingData");
   let useFavoritesData = useState("useFavoritesData");
+  let usePropertiesData = useState("usePropertiesData");
   let useSingleItem = useState<any>("useSingleItem");
   const fetchListings = async () => {
     try {
@@ -27,10 +28,21 @@ export default () => {
       console.log(err.messsage);
     }
   };
+  const fetchProperties = async () => {
+    try {
+      let result: any = await useFetchApi("/api/getProperties", {});
+      usePropertiesData.value = result?.properties;
+      console.log(usePropertiesData.value);
+    } catch (err: any) {
+      console.log(err.messsage);
+    }
+  };
   return {
+    fetchProperties,
     fetchListings,
     useFetchingData,
     useFavoritesData,
+    usePropertiesData,
     fetchSingleList,
     useSingleItem,
     fetchFavorites,
