@@ -18,7 +18,7 @@
           label="Email"
           type="email"
           validation="required|email|length:5,255"
-          placeholder="Enter Name"
+          placeholder="Enter Email"
         />
         <Input
           id="password"

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-7xl mx-auto flex items-center justify-between w-full px-4 gap-4 overflow-x-auto"
+    class="max-w-6xl mx-auto flex items-center justify-between w-full px-4 gap-4 overflow-x-auto"
   >
     <div
       v-for="(category, index) in categories"

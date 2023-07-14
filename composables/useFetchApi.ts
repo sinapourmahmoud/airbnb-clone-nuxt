@@ -2,7 +2,7 @@ const useFetchApi = async (
   url: string,
   options: {
     headers?: object;
-    method?: "GET" | "POST";
+    method?: "GET" | "POST" | "DELETE";
     body?: object;
   }
 ) => {

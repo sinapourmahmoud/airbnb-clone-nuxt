@@ -10,7 +10,11 @@
   >
     <NavbarDropdownItem title="My trips" v-if="!!useUser" />
     <NavbarDropdownItem title="My favorites" v-if="!!useUser" />
-    <NavbarDropdownItem title="My reservations" v-if="!!useUser" />
+    <NavbarDropdownItem
+      title="My reservations"
+      v-if="!!useUser"
+      @clicked="changePage('reservations')"
+    />
     <NavbarDropdownItem title="My properties" v-if="!!useUser" />
     <NavbarDropdownItem title="Airbnb your home" v-if="!!useUser" />
     <NavbarDropdownItem title="Logout" v-if="!!useUser" />
@@ -23,6 +27,7 @@
 interface Props {
   toggle: Boolean;
 }
+let router = useRouter();
 let { modalToggle } = useVars();
 let { useUser } = useAuth();
 let props = defineProps<Props>();
@@ -33,5 +38,9 @@ let emits = defineEmits<{
 const openModal = (name: String) => {
   modalToggle.value = name;
   emits("changeToggle");
+};
+
+const changePage = (url: string) => {
+  router.push(`/${url}`);
 };
 </script>

@@ -1,4 +1,5 @@
 export default () => {
+  let reservingList = useState("reservingList", () => null);
   const addReserving = async ({
     id,
     startDate,
@@ -27,5 +28,30 @@ export default () => {
       console.log(err);
     }
   };
-  return { addReserving };
+  const getReservations = async () => {
+    try {
+      let resault: any = await useFetchApi(`/api/getReservations`, {
+        method: "GET",
+      });
+
+      reservingList.value = resault.items;
+      console.log(resault);
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
+  const removeReservation = async (id: string) => {
+    try {
+      await useFetchApi(`/api/deleteReserving/${id}`, {
+        method: "DELETE",
+      });
+      reloadNuxtApp({
+        path: "/reservations",
+        ttl: 1000,
+      });
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
+  return { addReserving, getReservations, reservingList, removeReservation };
 };

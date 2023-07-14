@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-5xl mx-auto px-4">
+  <div class="max-w-4xl mx-auto px-4">
     <h1 class="text-xl font-bold my-3">{{ pageData?.title }}</h1>
     <small class="text-gray-500 block mb-4 text-base font-light"
       >{{ pageData?.locationValue }} , {{ countryItem?.region }}</small

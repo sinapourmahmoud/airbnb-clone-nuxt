@@ -10,22 +10,34 @@
         v-show="!!useUser"
       />
       <img
-        :src="data?.imageSrc"
+        :src="imageSrc"
         alt="product-image"
         class="w-full h-full object-cover rounded-xl transition-all duration-300 hover:scale-110"
       />
     </div>
     <h3 class="text-lg font-semibold" @click="handleRouting">
-      {{ data?.locationValue }} , {{ countryItem.region }}
+      {{ locationValue }} , {{ countryItem?.region }}
     </h3>
-    <small class="text-gray-500 text-base font-light" @click="handleRouting">{{
-      data?.category
-    }}</small>
-    <p class="text-base font-normal">{{ data?.price }} $ night</p>
+    <small
+      class="text-gray-500 text-base font-light"
+      @click="handleRouting"
+      v-show="!fromUserSide"
+    >
+      {{ category }}
+    </small>
+    <small
+      class="text-gray-500 text-base font-light"
+      @click="handleRouting"
+      v-show="fromUserSide"
+    >
+      {{ startDate }} - {{ endDate }}
+    </small>
+    <p class="text-base font-normal">{{ price }} $ night</p>
     <Button
-      title="Clear from properties"
+      @clicked="removeHandler"
+      :title="fromReserve ? 'Clear from reservations' : 'clear from properties'"
       type="button"
-      v-show="fromProperties"
+      v-show="fromUserSide"
       small
     />
   </div>
@@ -37,28 +49,55 @@ import { HeartIcon as SolidIcon } from "@heroicons/vue/24/solid";
 import { getCountry } from "~/utils/countries";
 
 interface Props {
-  data: Listing | null;
-  fromProperties?: boolean | false;
+  id?: string;
+  fromUserSide?: boolean | false;
+  imageSrc?: string;
+  locationValue?: string;
+  price?: number | string;
+  category: string;
+  startDate?: string;
+  endDate?: string;
+  fromReserve?: boolean | false;
+  reservationId?: string;
 }
 
 let { useUser } = useAuth();
 
 let { addLikeDislike } = useProduct();
 
-let { data, fromProperties } = defineProps<Props>();
+let {
+  fromUserSide,
+  imageSrc,
+  fromReserve,
+  reservationId,
+  locationValue,
+  price,
+  category,
+  id,
+  startDate,
+  endDate,
+} = defineProps<Props>();
+
+let emits = defineEmits<{
+  (event: "removeItem", id: string): void;
+}>();
 
 let isLiked = computed(() => {
-  return useUser?.value?.favoriteIds?.some((item: string) => item === data?.id);
+  return useUser?.value?.favoriteIds?.some((item: string) => item === id);
 });
 
 let countryItem = computed(() => {
-  return getCountry(data?.locationValue as string);
+  return getCountry(locationValue as string);
 });
 
 const handleLike = () => {
-  addLikeDislike(data?.id as string);
+  addLikeDislike(id as string, useRoute().fullPath);
 };
 const handleRouting = () => {
-  useRouter().push(`/listing/${data?.id}`);
+  useRouter().push(`/listing/${id}`);
+};
+
+const removeHandler = () => {
+  emits("removeItem", reservationId as string);
 };
 </script>
