@@ -1,5 +1,6 @@
 export default () => {
   let useFetchingData = useState("useFetchingData");
+  let useFavoritesData = useState("useFavoritesData");
   let useSingleItem = useState<any>("useSingleItem");
   const fetchListings = async () => {
     try {
@@ -18,5 +19,20 @@ export default () => {
       console.log(err.message);
     }
   };
-  return { fetchListings, useFetchingData, fetchSingleList, useSingleItem };
+  const fetchFavorites = async () => {
+    try {
+      let result: any = await useFetchApi("/api/getFavorites", {});
+      useFavoritesData.value = result?.favoritesList;
+    } catch (err: any) {
+      console.log(err.messsage);
+    }
+  };
+  return {
+    fetchListings,
+    useFetchingData,
+    useFavoritesData,
+    fetchSingleList,
+    useSingleItem,
+    fetchFavorites,
+  };
 };

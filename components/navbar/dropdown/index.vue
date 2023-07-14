@@ -9,7 +9,11 @@
     }`"
   >
     <NavbarDropdownItem title="My trips" v-if="!!useUser" />
-    <NavbarDropdownItem title="My favorites" v-if="!!useUser" />
+    <NavbarDropdownItem
+      title="My favorites"
+      v-if="!!useUser"
+      @clicked="changePage('favorites')"
+    />
     <NavbarDropdownItem
       title="My reservations"
       v-if="!!useUser"
