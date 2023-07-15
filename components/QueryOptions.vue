@@ -10,19 +10,19 @@
     >
       <component
         :is="category.icon"
-        class="w-9"
+        class="w-7"
         :class="
           checkCategory === category.label ? 'fill-black' : 'fill-gray-500'
         "
       ></component>
-      <h3
+      <h4
         class="font-light"
         :class="
           checkCategory === category.label ? 'text-black' : 'text-gray-500'
         "
       >
         {{ category.label }}
-      </h3>
+      </h4>
       <div
         class="absolute inset-x-0 h-1 w-full bottom-0"
         :class="checkCategory === category.label && 'bg-black'"

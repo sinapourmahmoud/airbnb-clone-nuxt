@@ -5,7 +5,6 @@ export default defineEventHandler(async (event) => {
   let { startDate, endDate, totalPrice } = body;
   let useContext = event.context.auth;
   let param = event.context.params?.id;
-  console.log(startDate, endDate, totalPrice);
 
   try {
     let reservingItem = await createReservation({

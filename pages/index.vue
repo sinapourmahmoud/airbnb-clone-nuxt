@@ -17,8 +17,25 @@
 </template>
 <script setup lang="ts">
 let { fetchListings, useFetchingData } = useFetch();
+let route = useRoute();
+let queries = route.query;
+
+watch(
+  () => route.query,
+  (newVal) => {
+    let queryUrl = "";
+    for (let i in newVal) {
+      queryUrl += `${i}=${newVal[i]}&`;
+    }
+    fetchListings(queryUrl);
+  }
+);
 
 onBeforeMount(() => {
-  fetchListings();
+  let queryUrl = "";
+  for (let item in queries) {
+    queryUrl += `${item}=${queries[item]}&`;
+  }
+  fetchListings(queryUrl);
 });
 </script>

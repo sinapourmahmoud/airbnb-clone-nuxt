@@ -2,7 +2,6 @@ import prisma from "../../db/prisma";
 export default defineEventHandler(async (event) => {
   let param = event.context.params?.id;
   let user = event.context.auth;
-  console.log("param", param, "user", user);
   try {
     let deleteItem = await prisma.reservation.deleteMany({
       where: {

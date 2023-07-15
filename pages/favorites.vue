@@ -23,6 +23,5 @@ let { useUser } = useAuth();
 
 onMounted(async () => {
   let data = await fetchFavorites();
-  console.log(useFavoritesData.value);
 });
 </script>

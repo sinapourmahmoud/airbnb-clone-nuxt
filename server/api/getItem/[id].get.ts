@@ -12,7 +12,6 @@ export default defineEventHandler(async (event) => {
         reservations: true,
       },
     });
-    console.log(data);
     return {
       data: {
         ...data,

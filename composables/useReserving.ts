@@ -35,7 +35,6 @@ export default () => {
       });
 
       reservingList.value = resault.items;
-      console.log(resault);
     } catch (err: any) {
       console.log(err.message);
     }

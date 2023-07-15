@@ -4,7 +4,6 @@ import { reservationTrandformer } from "../utils/transformer";
 
 export default defineEventHandler(async (event) => {
   let user = event.context.auth;
-  console.log(user);
   try {
     let findReservations = await prisma.reservation.findMany({
       where: {
