@@ -17,7 +17,7 @@
         <Button
           title="Next"
           @clicked="nextClick"
-          type="text"
+          type="button"
           v-show="step !== 5"
         />
         <Button
@@ -73,5 +73,6 @@ const handleSubmit = (e: any) => {
     addData(changeValues.list);
   }
   loading.value = false;
+  changeValues.reset();
 };
 </script>

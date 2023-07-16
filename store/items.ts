@@ -35,5 +35,18 @@ export const useItems = defineStore({
         [item]: value,
       };
     },
+    reset() {
+      this.list = {
+        category: "",
+        locationValue: "",
+        roomCount: 1,
+        guestCount: 1,
+        bathroomCount: 1,
+        imageSrc: "",
+        description: "",
+        title: "",
+        price: 1,
+      };
+    },
   },
 });

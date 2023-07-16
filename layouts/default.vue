@@ -23,6 +23,9 @@
       <template v-else-if="modalToggle == 'addItem'">
         <ModalsAddItem />
       </template>
+      <template v-else-if="modalToggle == 'filterItem'">
+        <ModalsFilterItem />
+      </template>
     </Modals>
     <QueryOptions />
   </div>

@@ -1,5 +1,6 @@
 <template>
   <div
+    @click="modalToggle = 'filterItem'"
     class="flex flex-1 md:flex-[0.5] rounded-full h-full border cursor-pointer transition-all duration-300 hover:shadow-md"
   >
     <div class="p-3 flex-1 flex items-center justify-between px-8">
@@ -14,4 +15,6 @@
 </template>
 <script setup lang="ts">
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
+
+let { modalToggle } = useVars();
 </script>

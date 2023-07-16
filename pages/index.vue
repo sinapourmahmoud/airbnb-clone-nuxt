@@ -1,6 +1,7 @@
 <template>
   <div class="max-w-6xl mx-auto flex items-center px-4">
     <div
+      v-if="useFetchingData"
       class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 w-full"
     >
       <Cart
@@ -13,10 +14,14 @@
         :category="data?.category"
       />
     </div>
+    <div class="flex w-full items-center justify-center" v-else>
+      <NoFind title="Listings" @clicked="modalToggle = 'addItem'" />
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 let { fetchListings, useFetchingData } = useFetch();
+let { modalToggle } = useVars();
 let route = useRoute();
 let queries = route.query;
 
