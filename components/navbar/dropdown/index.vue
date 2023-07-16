@@ -28,7 +28,11 @@
       v-if="!!useUser"
       @clicked="modalToggle = 'addItem'"
     />
-    <NavbarDropdownItem title="Logout" v-if="!!useUser" />
+    <NavbarDropdownItem
+      title="Logout"
+      v-if="!!useUser"
+      @clicked="handleLogout"
+    />
 
     <NavbarDropdownItem title="Register" @clicked="openModal" v-else />
     <NavbarDropdownItem title="Login" @clicked="openModal" v-if="!useUser" />
@@ -40,7 +44,7 @@ interface Props {
 }
 let router = useRouter();
 let { modalToggle } = useVars();
-let { useUser } = useAuth();
+let { useUser, logout } = useAuth();
 let props = defineProps<Props>();
 let emits = defineEmits<{
   (event: "changeToggle"): void;
@@ -53,5 +57,13 @@ const openModal = (name: String) => {
 
 const changePage = (url: string) => {
   router.push(`/${url}`);
+};
+
+const handleLogout = async () => {
+  await logout();
+  reloadNuxtApp({
+    path: "/",
+    ttl: 1000,
+  });
 };
 </script>

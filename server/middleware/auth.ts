@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
     "/api/deleteReserving/:id",
     "/api/getFavorites",
     "/api/getProperties",
+    "/api/logout",
   ];
   let mathcedEndpoint = endpoints.some((endPoint) => {
     let item = new UrlPattern(endPoint);

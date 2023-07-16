@@ -59,5 +59,8 @@ export default () => {
     // setUser(user as string);
     // return pending;
   };
-  return { register, login, initAuth, useUser, useToken };
+  const logout = async () => {
+    await useFetchApi("/api/logout", {});
+  };
+  return { register, login, initAuth, useUser, useToken, logout };
 };
