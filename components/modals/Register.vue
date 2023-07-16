@@ -34,6 +34,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+definePageMeta({
+  middleware: ["auth"],
+});
 let { register } = useAuth();
 let { modalToggle } = useVars();
 let loading = ref(false);

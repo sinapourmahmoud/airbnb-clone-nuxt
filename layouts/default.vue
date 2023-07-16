@@ -6,6 +6,7 @@
       >
         <img
           src="./../assets//logo.png"
+          @click="$router.push('/')"
           alt="logo"
           class="w-24 cursor-pointer object-contain"
         />

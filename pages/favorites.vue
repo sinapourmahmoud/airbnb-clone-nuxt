@@ -26,6 +26,16 @@
   </div>
 </template>
 <script setup lang="ts">
+definePageMeta({
+  middleware: [
+    (to, from) => {
+      let { useUser } = useAuth();
+      if (!useUser.value) {
+        return navigateTo("/");
+      }
+    },
+  ],
+});
 let { fetchFavorites, useFavoritesData } = useFetch();
 let { useUser } = useAuth();
 

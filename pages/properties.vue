@@ -30,6 +30,16 @@
   </div>
 </template>
 <script setup lang="ts">
+definePageMeta({
+  middleware: [
+    (to, from) => {
+      let { useUser } = useAuth();
+      if (!useUser.value) {
+        return navigateTo("/");
+      }
+    },
+  ],
+});
 let { fetchProperties, usePropertiesData } = useFetch();
 let { removeReservation } = useReserving();
 onBeforeMount(async () => {

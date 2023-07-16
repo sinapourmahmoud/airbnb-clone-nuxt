@@ -79,7 +79,12 @@
             transparent
             borderless
           />
-          <Button title="Reserve" type="button" @clicked="handleReserving" />
+          <Button
+            title="Reserve"
+            type="button"
+            @clicked="handleReserving"
+            :disabled="!useUser"
+          />
           <div class="flex items-center justify-between">
             <p class="text-lg font-semibold">Total</p>
             <p class="text-lg font-semibold">$ {{ totalPrice }}</p>
@@ -171,6 +176,7 @@ const categories = [
   },
 ];
 
+let { modalToggle } = useVars();
 let { addLikeDislike } = useProduct();
 
 let { useUser } = useAuth();
@@ -220,12 +226,16 @@ let totalPrice = computed(() => {
 });
 
 const handleReserving = async () => {
-  await addReserving({
-    id: pageData.value?.id,
-    startDate: range.value?.start,
-    endDate: range.value?.end,
-    totalPrice: totalPrice.value,
-  });
+  if (useUser.value) {
+    await addReserving({
+      id: pageData.value?.id,
+      startDate: range.value?.start,
+      endDate: range.value?.end,
+      totalPrice: totalPrice.value,
+    });
+  } else {
+    modalToggle.value = "Login";
+  }
 };
 </script>
 <style>
